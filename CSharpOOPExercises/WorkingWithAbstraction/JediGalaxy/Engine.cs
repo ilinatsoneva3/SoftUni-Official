@@ -2,6 +2,7 @@
 {
     using System;
     using System.Linq;
+
     public class Engine
     {
         private int[,] matrix;
