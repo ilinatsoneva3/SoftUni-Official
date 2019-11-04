@@ -4,8 +4,6 @@
 
     public class Car
     {
-        private const string offset = "  ";
-
         public string Model { get; set; }
         public Engine Engine { get; set; }
         public int Weight { get; set; }
@@ -38,11 +36,11 @@
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"{this.Model}:");
-            sb.Append(this.Engine.ToString());
-            sb.AppendLine($" Weight: {(this.Weight == -1 ? "n / a" : this.Weight.ToString())}\n");
-            sb.AppendFormat($" Color: {this.Color}");
+            sb.AppendLine(this.Engine.ToString());
+            sb.AppendLine($"  Weight: {(this.Weight == -1 ? "n/a" : this.Weight.ToString())}");
+            sb.AppendFormat($"  Color: {this.Color}");
 
-            return sb.ToString().TrimEnd() ;
+            return sb.ToString().TrimEnd();
         }
     }
 }

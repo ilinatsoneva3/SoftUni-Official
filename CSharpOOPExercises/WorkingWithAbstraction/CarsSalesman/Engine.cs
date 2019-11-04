@@ -36,11 +36,11 @@
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($" {this.Model}:");
-            sb.AppendLine($"  Power: {this.Power}");
-            sb.AppendLine($"  Displacement: {(this.Displacement == -1 ? "n/a" : this.Displacement.ToString())}");
-            sb.AppendLine($"  Efficiency: {this.Efficiency}");
+            sb.AppendLine($"    Power: {this.Power}");
+            sb.AppendLine($"    Displacement: {(this.Displacement == -1 ? "n/a" : this.Displacement.ToString())}");
+            sb.AppendLine($"    Efficiency: {this.Efficiency}");
 
-            return sb.ToString();
+            return sb.ToString().TrimEnd();
         }
     }
 }
