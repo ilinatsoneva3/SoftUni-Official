@@ -5,7 +5,11 @@ VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JediGalaxy", "JediGalaxy\JediGalaxy.csproj", "{E1D3A55A-7DE8-4F80-8101-89E21B5E388C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarsSalesman", "CarsSalesman\CarsSalesman.csproj", "{78AA5A69-7C24-445E-8B4A-96188478AB69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarsSalesman", "CarsSalesman\CarsSalesman.csproj", "{78AA5A69-7C24-445E-8B4A-96188478AB69}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P06_Sneaking", "P06_Sneaking\P06_Sneaking.csproj", "{336E2DA5-65FA-4A6A-8C45-73A30966653C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P05_GreedyTimes", "P05_GreedyTimes\P05_GreedyTimes.csproj", "{28232637-E103-4525-B8BE-77C5B35B4ECD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{78AA5A69-7C24-445E-8B4A-96188478AB69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78AA5A69-7C24-445E-8B4A-96188478AB69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78AA5A69-7C24-445E-8B4A-96188478AB69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{336E2DA5-65FA-4A6A-8C45-73A30966653C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{336E2DA5-65FA-4A6A-8C45-73A30966653C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{336E2DA5-65FA-4A6A-8C45-73A30966653C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{336E2DA5-65FA-4A6A-8C45-73A30966653C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28232637-E103-4525-B8BE-77C5B35B4ECD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28232637-E103-4525-B8BE-77C5B35B4ECD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28232637-E103-4525-B8BE-77C5B35B4ECD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28232637-E103-4525-B8BE-77C5B35B4ECD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
