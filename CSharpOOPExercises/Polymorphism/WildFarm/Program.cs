@@ -1,12 +1,11 @@
-﻿using System;
-
-namespace WildFarm
+﻿namespace WildFarm
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var engine = new Engine();
+            engine.Run();
         }
     }
 }

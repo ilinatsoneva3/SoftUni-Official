@@ -1,4 +1,4 @@
-﻿namespace WildFarm.Food
+﻿namespace WildFarm.Foods
 {
     public abstract class Food
     {

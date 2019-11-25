@@ -1,6 +1,6 @@
-﻿namespace WildFarm.Food
+﻿namespace WildFarm.Foods
 {
-    private class Vegetable : Food
+    public class Vegetable : Food
     {
         public Vegetable(int quantity) : base(quantity)
         {
