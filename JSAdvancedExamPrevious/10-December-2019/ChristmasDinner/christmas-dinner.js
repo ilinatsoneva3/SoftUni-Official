@@ -37,7 +37,7 @@ class ChristmasDinner {
         };
         this.dishes.push({
             "recipeName": name,
-            "productList": productsList
+            "productsList": productsList
         });
         return `${name} has been successfully cooked!`;
     };
@@ -47,8 +47,8 @@ class ChristmasDinner {
         if(currentDish===undefined){
             throw new Error("We do not have this dish");
         };
-        let currentGuest = Object.keys(this.guests).includes(name);
-        if(currentGuest){
+        //let currentGuest = Object.keys(this.guests).includes(name);
+        if(this.guests[name]){
             throw new Error("This guest has already been invited");
         }        
         this.guests[name] = dish;
@@ -59,7 +59,7 @@ class ChristmasDinner {
         let sb = ''
         for (const guest of Object.keys(this.guests)) {
             let products = this.dishes.filter(x=>x.recipeName==[this.guests[guest]]);            
-            products = products[0]["productList"].join(", ");
+            products = products[0]["productsList"].join(", ");
             sb += `${guest} will eat ${this.guests[guest]}, which consists of ${products}` +`\n`;
         }
         return sb.trim();
