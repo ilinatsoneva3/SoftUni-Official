@@ -47,7 +47,6 @@ class ChristmasDinner {
         if(currentDish===undefined){
             throw new Error("We do not have this dish");
         };
-        //let currentGuest = Object.keys(this.guests).includes(name);
         if(this.guests[name]){
             throw new Error("This guest has already been invited");
         }        
