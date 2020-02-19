@@ -68,7 +68,7 @@ class Forum {
     postAnswer(username, questionId, answer) {
         let user = this._users.find(u => u.username === username);
         if (user === undefined || user.isLogged === false) {
-            throw new Error(`You should be logged in to post questions`);
+            throw new Error(`You should be logged in to post answers`);
         }
         if (!answer) {
             throw new Error(`Invalid answer`);
