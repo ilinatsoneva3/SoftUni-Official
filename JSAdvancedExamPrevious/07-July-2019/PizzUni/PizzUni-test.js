@@ -76,6 +76,11 @@ describe("tests", function () {
        result=pizzUni.detailsAboutMyOrder(0);
        assert.equal(result,"Status of your order: completed");
     });
+    it("detailsAboutMyOrder", function(){
+        let pizzUni = new PizzUni();
+        let result = pizzUni.detailsAboutMyOrder(5);
+        assert.equal(result, undefined);
+    })
     it("completeOrder", function(){
         let pizzUni = new PizzUni();
         pizzUni.registerUser("ilina@abv.bg");
