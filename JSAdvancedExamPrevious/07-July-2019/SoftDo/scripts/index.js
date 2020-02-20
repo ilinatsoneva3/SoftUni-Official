@@ -10,41 +10,37 @@ function mySolution() {
         let username = document.querySelector("div input").value;
 
         let div = createElement("div", "", "pendingQuestion");
-        let img = createElement("img");
+        let img = createElement("img", "", null, [{ k: "src", v: "./images/user.png" }, { k: "width", v: "32" }, { k: "height", v: "32" }]);
         let span = createElement("span", username);
         let p = createElement("p", inputField);
         let divActions = createElement("div", "", "actions");
-        let archiveBtn = createElement("button", "Archive", "archive");
+        let archiveBtn = createElement("button", "Archive", "archive", null, { k: "click", v: archiveQuestion });
+        let openBtn = createElement("button", "Open", "open", null, { k: "click", v: openQuestion });
 
-        archiveBtn.addEventListener("click", archiveQuestion);
+        divActions = appendElements([archiveBtn, openBtn], divActions);
 
-        let openBtn = createElement("button", "Open", "open");
-
-        openBtn.addEventListener("click", openQuestion);
-
-        divActions.appendChild(archiveBtn);
-        divActions.appendChild(openBtn);
-        div.appendChild(img);
-        div.appendChild(span);
-        div.appendChild(p);
-        div.appendChild(divActions)
+        div = appendElements([img, span, p, divActions], div);
         pendingQuestions.appendChild(div);
     }
 
-    function createElement(type, text, classText) {
+    function createElement(type, text, classText, attributes, event) {
         let el = document.createElement(type);
         el.textContent = text;
 
-        if (classText !== undefined) {
+        if (classText) {
             el.classList.add(classText);
         }
 
-        if (type === "img") {
-            el.src = "./images/user.png";
-            el.width = 32;
-            el.height = 32;
-        } else if (type === "span") {
+        if (type === "span") {
             text === "" ? el.textContent = "Anonymous" : el.textContent = text;
+        }
+
+        if (attributes) {
+            attributes.forEach(a=>el.setAttribute(a.k,a.v));
+        }
+
+        if (event) {
+            el.addEventListener(event.k, event.v)
         }
         return el;
     }
@@ -67,50 +63,49 @@ function mySolution() {
         let buttons = parent.querySelectorAll("button");
 
         Array.from(buttons).forEach(b => div.removeChild(b));
-        
-        let replyBtn = createElement("button", "Reply", "reply");
-        replyBtn.addEventListener("click", replyToQuestion);
+
+        let replyBtn = createElement("button", "Reply", "reply", null, { k: "click", v: replyToQuestion });
+        let divReplySection = createElement("div", "", "replySection", [{ k: "style", v: "display: none" }]);
+        let input = createElement("input", "", "replyInput", [{ k: "type", v: "text" }, { k: "placeholder", v: "Reply to this question here..." }]);
+        let replyButton = createElement("button", "Send", "replyButton", null,{k:"click", v:postReply});
+        let ol = createElement("ol", "", "reply",[{k:"type", v:"1"}]);
         div.appendChild(replyBtn);
-        let divReplySection = createElement("div", "", "replySection");
-        divReplySection.style.display = "none";
-        let input = createElement("input", "", "replyInput");
-        input.type = "text";
-        input.placeholder = "Reply to this question here...";
-        divReplySection.appendChild(input);
-        let replyButton = createElement("button", "Send", "replyButton");
-        replyButton.addEventListener("click", postReply)  
-        divReplySection.appendChild(replyButton);
-        let ol = createElement("ol", "", "reply");
-        ol.type = 1;
-        divReplySection.appendChild(ol);
+        divReplySection = appendElements([input, replyButton, ol], divReplySection);
         parent.appendChild(divReplySection);
         openQuenstions.appendChild(parent);
     }
 
-    function postReply(e){
+    function postReply(e) {
         let parent = e.target;
         parent = parent.parentNode;
         let answer = parent.getElementsByTagName("input")[0].value;
-        if(answer){
+        if (answer) {
             let listItem = parent.getElementsByTagName("ol")[0];
             let li = createElement("li", answer);
             listItem.appendChild(li);
         }
-        answer = parent.getElementsByTagName("input")[0].value="";
+        answer = parent.getElementsByTagName("input")[0].value = "";
     }
 
-    function replyToQuestion(e){
+    function replyToQuestion(e) {
         let parent = e.target;
         parent = parent.parentNode.parentNode;
         let divs = parent.querySelectorAll("div");
         let button = divs[0].querySelector("button");
 
-        if(button.textContent==="Reply"){
-            button.textContent="Back";
+        if (button.textContent === "Reply") {
+            button.textContent = "Back";
             divs[1].style.display = "block";
-        }else{
-            button.textContent="Reply";
+        } else {
+            button.textContent = "Reply";
             divs[1].style.display = "none";
         }
+    }
+
+    function appendElements(children, parent) {
+        for (const child of children) {
+            parent.appendChild(child);
+        }
+        return parent;
     }
 }
