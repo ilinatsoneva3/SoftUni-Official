@@ -89,4 +89,4 @@ describe("Test", function () {
         actual = store.printWorkers();
         assert.deepEqual(actual, "Name:Harry Position:CEO BooksSold:1");
     });
-})
+});
