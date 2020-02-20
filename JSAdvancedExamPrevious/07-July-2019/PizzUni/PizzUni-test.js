@@ -72,6 +72,9 @@ describe("tests", function () {
         pizzUni.makeAnOrder("ilina@abv.bg", "Barbeque Classic", "Fanta");
         let result = pizzUni.detailsAboutMyOrder(0);
         assert.equal(result,"Status of your order: pending");
+       pizzUni.completeOrder();
+       result=pizzUni.detailsAboutMyOrder(0);
+       assert.equal(result,"Status of your order: completed");
     });
     it("completeOrder", function(){
         let pizzUni = new PizzUni();
