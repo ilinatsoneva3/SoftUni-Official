@@ -1,8 +1,8 @@
-//function arrayMap(arr, func) {
-//  return arr.reduce((a, b) => {
-//    return [...a, func(b)];
-//  }, []);
-//}
+function arrayMap(arr, func) {
+  return arr.reduce((a, b) => {
+    return [...a, func(b)];
+  }, []);
+}
 
 //same output
 
