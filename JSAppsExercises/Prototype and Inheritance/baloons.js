@@ -31,14 +31,11 @@ function baloons() {
     }
   }
 
-  let test = new PartyBalloon("blue", 1, "white", 2);
-  console.log(test.ribbon.color);
-
-  //return {
-  //  Balloon,
-  //  PartyBalloon,
-  //  BirthdayBalloon
-  //};
+  return {
+    Balloon,
+    PartyBalloon,
+    BirthdayBalloon
+  };
 }
 
 baloons();
