@@ -36,15 +36,16 @@ function attachEvents() {
 
         loadPhonebook();
       })
-      .catch(err => console.log(err));
+      .catch(error);
   }
 
   function displayPhonebook(data) {
-    Object.entries(data).forEach(input => {
-      const [entryId, contact] = input;
+    Object.entries(data).forEach(([entryId, input]) => {
+      const { person, phone } = input;
 
       let li = document.createElement("li");
-      li.textContent = `${contact.person}: ${contact.phone}`;
+
+      li.textContent = `${person}: ${phone}`;
 
       let deleteBtn = document.createElement("button");
       deleteBtn.textContent = "Delete";
@@ -71,7 +72,11 @@ function attachEvents() {
         phoneBook.innerHTML = "";
         loadPhonebook();
       })
-      .catch(err => console.log(err));
+      .catch(error);
+  }
+
+  function error() {
+    phoneBook.innerHTML = "Sorry, something went wrong";
   }
 }
 
