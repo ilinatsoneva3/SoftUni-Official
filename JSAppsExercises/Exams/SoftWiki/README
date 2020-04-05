@@ -1,0 +1,7 @@
+README
+=====
+Tests were made with CLoud Firestore, not Realtime Database
+-----
+One registered user available, who is also creator of the only record in the database (for test purposes):
+username: ilina@abv.bg
+password: password
