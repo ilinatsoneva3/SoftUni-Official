@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Coffee Bill</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <h2>Coffee Bill</h2>
+    <table id="bill">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody id="product-list"></tbody>
+        <tfoot>
+            <tr>
+                <td>Total:</td>
+                <td>0.00</td>
+            </tr>
+        </tfoot>
+    </table>
+    <section id="add-product">
+        <h3>Add new product</h3>
+        <label>
+            <span>
+                Product:
+            </span>
+            <input type="text">
+        </label>
+        <label>
+            <span>
+                Price:
+            </span>
+            <input type="number">
+        </label>
+        <button onclick="addProduct()">Add</button>
+    </section>
+
+    <script>
+        function addProduct() {
+            let product = document.getElementsByTagName("input")[0].value;
+            let price = +document.getElementsByTagName("input")[1].value;
+            let table = document.getElementById("product-list");
+            let totalPrice = +document.querySelector("#bill > tfoot:nth-child(3) > tr:nth-child(1) > td:nth-child(2)").textContent;
+
+            if (product && price) {
+                if (price > 0) {
+                    let tr = document.createElement("tr");
+                    let tdProduct = document.createElement("td");
+                    let tdPrice = document.createElement("td");
+
+                    tdProduct.textContent = product;
+                    tdPrice.textContent=price;
+
+                    tr.appendChild(tdProduct);
+                    tr.appendChild(tdPrice);
+                    table.appendChild(tr);
+
+                    totalPrice += price;
+
+                    document.querySelector("#bill > tfoot:nth-child(3) > tr:nth-child(1) > td:nth-child(2)").textContent = totalPrice.toFixed(2);
+                }
+            }
+
+            //Array.from(document.getElementsByTagName("input")).forEach(e => {
+            //    e.value = "";
+            // });
+
+            document.getElementsByTagName("input")[0].value = "";
+            document.getElementsByTagName("input")[1].value = "";
+        }
+    </script>
+
+</body>
+
+</html>
