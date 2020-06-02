@@ -17,7 +17,7 @@
         {
             if (index==arr.Length)
             {
-                Console.WriteLine(string.Join(" ", arr));
+                Console.WriteLine(string.Join("", arr));
             }
             else
             {
