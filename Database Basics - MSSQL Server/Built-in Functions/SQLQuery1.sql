@@ -131,4 +131,12 @@ ORDER BY [Game],
 		Duration,
 		[Part of the Day]
 
+--TASK EIGHTEEN--
+
+SELECT ProductName
+	,OrderDate
+	,DATEADD(DAY,3,OrderDate) AS [Pay Due]
+	,DATEADD(MONTH,1,OrderDate) AS [Deliver Due]
+	FROM Orders
+
 
