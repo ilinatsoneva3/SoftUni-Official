@@ -1,6 +1,7 @@
 ﻿namespace RecursiveFactoriel
 {
     using System;
+
     class RecursiveFactorial
     {
         static void Main(string[] args)
