@@ -189,3 +189,83 @@ AS
 	END
 
 	EXEC usp_CancelFlights
+
+---ADDITIONAL EXERCISES---
+
+--TASK FIVE--
+
+SELECT Origin, Destination
+	FROM Flights
+	ORDER BY Origin ASC, Destination ASC
+
+--TASK EIGHT--
+
+SELECT TOP(10) FirstName, LastName, Price
+	FROM Tickets AS t
+	JOIN Passengers AS p ON t.PassengerId = p.Id
+	ORDER BY Price DESC,
+			FirstName ASC,
+			LastName ASC
+
+--TASK NINE--
+
+SELECT lt.Type, COUNT(l.PassengerId) AS [MostUsedLuggage]
+	FROM Luggages AS l
+	JOIN LuggageTypes AS lt ON l.LuggageTypeId = lt.Id
+	GROUP BY lt.Type
+	ORDER BY MostUsedLuggage DESC, lt.Type ASC
+
+--TASK TWELVE--
+
+SELECT p.PassportId, p.Address 
+	FROM Passengers AS p
+	LEFT JOIN Luggages AS l ON p.Id = l.PassengerId
+	WHERE l.PassengerId IS NULL
+	ORDER BY p.PassportId ASC, p.Address ASC
+
+--TASK THIRTEEN--
+
+SELECT p.FirstName AS [First Name], 
+		p.LastName AS [Last Name], 
+		COUNT(t.Id) AS [Total Trips]
+	FROM Passengers AS p
+	LEFT JOIN Tickets AS t ON p.Id = t.PassengerId
+	GROUP BY p.FirstName, p.LastName
+	ORDER BY [Total Trips] DESC,
+			[First Name] ASC,
+			[Last Name] ASC
+
+--TASK FIFTEEN--
+
+SELECT FirstName, LastName, Destination, Price 
+	FROM 
+		(SELECT p.FirstName, 
+			p.LastName, 
+			f.Destination,
+			Price,
+			DENSE_RANK() OVER (PARTITION BY p.FirstName ORDER BY Price DESC) AS [Rank]
+				FROM Passengers AS p
+				JOIN Tickets AS t ON p.Id = t.PassengerId
+				JOIN Flights AS f ON f.Id = t.FlightId) AS [RankQuery]
+	WHERE [Rank] = 1
+	ORDER BY Price DESC, FirstName ASC, LastName ASC, Destination ASC
+
+--TASK SIXTEEN--
+		
+SELECT Destination, COUNT(t.Id) AS [FliesCount]
+	FROM Flights AS f
+	LEFT JOIN Tickets AS t ON f.Id = t.FlightId
+	GROUP BY Destination
+		ORDER BY FliesCount DESC, Destination
+
+--TASK SEVENTEEN--
+
+SELECT p.Name, p.Seats, COUNT(t.PassengerId) AS [Passengers Count]
+	FROM Planes AS p
+	LEFT JOIN Flights AS f ON p.Id = f.PlaneId
+	LEFT JOIN Tickets AS t ON t.FlightId = f.Id
+	LEFT JOIN Passengers AS pa ON pa.Id = t.PassengerId
+	GROUP BY p.Name, p.Seats
+	ORDER BY [Passengers Count] DESC,
+			p.Name ASC,
+			p.Seats ASC
