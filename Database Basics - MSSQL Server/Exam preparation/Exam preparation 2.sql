@@ -200,3 +200,47 @@ AS
 	END
 
 EXEC usp_ExcludeFromSchool 301
+
+
+---ADDITIONAL EXERCISES---
+
+--TASK FIVE--
+
+SELECT FirstName, LastName, Age
+	FROM STUDENTS
+	WHERE AGE >= 12
+	ORDER BY FirstName, LastName
+
+
+--TASK SIX--
+
+SELECT CONCAT(FirstName, ' ', MiddleName, ' ', LastName) AS [Full Name],
+	   [Address]
+	FROM Students
+	WHERE [Address] LIKE '%road%'
+	ORDER BY FirstName, LastName, [Address]
+
+--TASK SEVEN--
+
+SELECT FirstName, [Address], Phone
+	FROM Students
+	WHERE MiddleName IS NOT NULL AND Phone LIKE '42%'
+	ORDER BY FirstName
+
+--TASK NINE--
+
+--Select all teachers’ full names and the subjects they teach with the count of lessons in each. 
+--Finally select the count of students each teacher has. 
+--Order them by students count descending, full name (ascending) and subjects (ascending).
+
+SELECT CONCAT(t.FirstName, ' ', t.LastName) AS [FullName],
+	   CONCAT(sub.Name, '-', sub.Lessons) AS [Subjects],
+	  st.StudentId
+	FROM Teachers AS t
+	JOIN Subjects AS sub ON sub.Id = t.SubjectId
+	JOIN StudentsSubjects AS ss ON ss.SubjectId = sub.Id
+	JOIN StudentsTeachers AS st ON st.TeacherId = t.Id
+	GROUP BY t.FirstName, t.LastName, t.Id, sub.Name, sub.Lessons
+
+SELECT  *
+	FROM StudentsTeachers
