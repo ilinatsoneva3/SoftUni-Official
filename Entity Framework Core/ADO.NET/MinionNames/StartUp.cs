@@ -3,7 +3,7 @@ using Microsoft.Data.SqlClient;
 
 namespace MinionNames
 {
-    class StartUp
+    public class StartUp
     {
         static void Main(string[] args)
         {
