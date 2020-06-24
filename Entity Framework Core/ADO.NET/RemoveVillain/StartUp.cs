@@ -23,11 +23,13 @@ namespace RemoveVillain
         {
             var result = new StringBuilder();
 
+            using var sqlTransaction = connection.BeginTransaction();
             //find if villain exists
 
             var queryText = @"SELECT Name FROM Villains WHERE Id = @villainId";
             var sqlCommand = new SqlCommand(queryText, connection);
             sqlCommand.Parameters.AddWithValue("@villainId", villainId);
+            sqlCommand.Transaction = sqlTransaction;
 
             var name = sqlCommand.ExecuteScalar()?.ToString();
 
@@ -37,24 +39,44 @@ namespace RemoveVillain
             }
             else
             {
-                //delete minions
-                queryText = @"DELETE FROM MinionsVillains WHERE VillainId = @villainId";
-                sqlCommand = new SqlCommand(queryText, connection);
-                sqlCommand.Parameters.AddWithValue("@villainId", villainId);
-                var numOfMinions = sqlCommand.ExecuteNonQuery();
+                try
+                {
+                    //delete minions
+                    queryText = @"DELETE FROM MinionsVillains WHERE VillainId = @villainId";
+                    sqlCommand = new SqlCommand(queryText, connection);
+                    sqlCommand.Parameters.AddWithValue("@villainId", villainId);
+                    sqlCommand.Transaction = sqlTransaction;
+                    var numOfMinions = sqlCommand.ExecuteNonQuery();
 
-                //delete villain
-                queryText = @"DELETE FROM Villains WHERE Id = @villainId";
-                sqlCommand = new SqlCommand(queryText, connection);
-                sqlCommand.Parameters.AddWithValue("@villainId", villainId);
-                sqlCommand.ExecuteNonQuery();
+                    //delete villain
+                    queryText = @"DELETE FROM Villains WHERE Id = @villainId";
+                    sqlCommand = new SqlCommand(queryText, connection);
+                    sqlCommand.Parameters.AddWithValue("@villainId", villainId);
+                    sqlCommand.Transaction = sqlTransaction;
+                    sqlCommand.ExecuteNonQuery();
 
-                //append text to be printed
-                result.AppendLine($"{name} was deleted.");
-                result.AppendLine($"{numOfMinions} minions were released.");
+                    sqlTransaction.Commit();
+
+                    //append text to be printed
+                    result.AppendLine($"{name} was deleted.");
+                    result.AppendLine($"{numOfMinions} minions were released.");
+                }
+                catch (Exception e)
+                {
+                    result.AppendLine(e.Message);
+
+                    try
+                    {
+                        sqlTransaction.Rollback();
+                    }
+                    catch (Exception ex)
+                    {
+                        result.AppendLine(ex.Message);
+                    }                   
+                }                
             }
 
-            return result.ToString();
+            return result.ToString().TrimEnd();
         }
     }
 }
