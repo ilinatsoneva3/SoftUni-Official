@@ -1,12 +1,11 @@
 ﻿using Microsoft.Data.SqlClient;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace IncreaseMinionAge
 {
-    class StartUp
+    public class StartUp
     {
         private const string connectionText = @"Server=DESKTOP-URSLOO9\SQLEXPRESS;Database=MinionsDB;Integrated Security=true";
 

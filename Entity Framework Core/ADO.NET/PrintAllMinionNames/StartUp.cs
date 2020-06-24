@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace PrintAllMinionNames
 {
-    class StartUp
+    public class StartUp
     {
         private const string connectionText = @"Server=DESKTOP-URSLOO9\SQLEXPRESS;Database=MinionsDB;Integrated Security=true";
 
