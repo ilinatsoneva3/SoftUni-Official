@@ -3,21 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29519.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VilainNames", "VilainNames.csproj", "{B1FE9645-0579-43C9-AD7B-7DAE46C920EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VilainNames", "VillainName\VilainNames.csproj", "{B1FE9645-0579-43C9-AD7B-7DAE46C920EA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinionNames", "..\MinionNames\MinionNames.csproj", "{777CEDF3-2147-42FB-B532-8A54D86CBCA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinionNames", "MinionNames\MinionNames.csproj", "{777CEDF3-2147-42FB-B532-8A54D86CBCA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddMinion", "..\AddMinion\AddMinion.csproj", "{6688FF4B-D4C7-46CA-9873-6DEB49E1FE1A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AddMinion", "AddMinion\AddMinion.csproj", "{6688FF4B-D4C7-46CA-9873-6DEB49E1FE1A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChangeTownNameCasing", "..\ChangeTownNameCasing\ChangeTownNameCasing.csproj", "{73F50431-40DF-488D-9BB2-91830A85D886}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChangeTownNameCasing", "ChangeTownNameCasing\ChangeTownNameCasing.csproj", "{73F50431-40DF-488D-9BB2-91830A85D886}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemoveVillain", "..\RemoveVillain\RemoveVillain.csproj", "{66026AEB-19B5-4AE7-9DAF-9D661C047DC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RemoveVillain", "RemoveVillain\RemoveVillain.csproj", "{66026AEB-19B5-4AE7-9DAF-9D661C047DC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintAllMinionNames", "..\PrintAllMinionNames\PrintAllMinionNames.csproj", "{BD064D9C-F616-4682-85B3-6FD4EBA76725}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrintAllMinionNames", "PrintAllMinionNames\PrintAllMinionNames.csproj", "{BD064D9C-F616-4682-85B3-6FD4EBA76725}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IncreaseMinionAge", "..\IncreaseMinionAge\IncreaseMinionAge.csproj", "{A8C2C94F-F18F-40C1-A61F-368A11990009}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IncreaseMinionAge", "IncreaseMinionAge\IncreaseMinionAge.csproj", "{A8C2C94F-F18F-40C1-A61F-368A11990009}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IncreaseAgeStoredProcedure", "..\IncreaseAgeStoredProcedure\IncreaseAgeStoredProcedure.csproj", "{B10A48DA-4427-46D2-B008-C8EF6FECB272}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IncreaseAgeStoredProcedure", "IncreaseAgeStoredProcedure\IncreaseAgeStoredProcedure.csproj", "{B10A48DA-4427-46D2-B008-C8EF6FECB272}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
