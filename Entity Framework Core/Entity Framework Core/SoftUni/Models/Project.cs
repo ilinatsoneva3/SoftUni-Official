@@ -2,7 +2,8 @@
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class Project
     {
         public Project()
