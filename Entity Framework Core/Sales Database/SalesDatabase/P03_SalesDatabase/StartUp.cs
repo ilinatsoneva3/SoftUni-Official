@@ -11,18 +11,18 @@
     {
         static void Main(string[] args)
         {
-           // var context = new SalesContext();
-           // var random = new Random();
-           // var writer = new ConsoleWriter();
-           //
-           // var seeders = new List<ISeeder>();
-           // seeders.Add(new ProductSeeder(context, random, writer));
-           // seeders.Add(new StoreSeeder(context, writer));
-           //
-           // foreach (var seeder in seeders)
-           // {
-           //     seeder.Seed();
-           // }
+           var context = new SalesContext();
+           var random = new Random();
+           var writer = new ConsoleWriter();
+           
+           var seeders = new List<ISeeder>();
+           seeders.Add(new ProductSeeder(context, random, writer));
+           seeders.Add(new StoreSeeder(context, writer));
+           
+           foreach (var seeder in seeders)
+           {
+               seeder.Seed();
+           }
         }
     }
 }

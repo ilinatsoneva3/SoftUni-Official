@@ -1,5 +1,6 @@
 ﻿namespace P03_SalesDatabase.Data.Models
 {
+    using P03_SalesDatabase.Common;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
@@ -7,10 +8,10 @@
     {
         public int StoreId { get; set; }
 
-        [Required, MaxLength(80)]
+        [Required, MaxLength(GlobalConstants.StoreNameMaxLength)]
         public string Name { get; set; }
 
         [Required]
-        public ICollection<Sale> Sales { get; set; }
+        public virtual ICollection<Sale> Sales { get; set; }
     }
 }

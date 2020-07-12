@@ -1,5 +1,6 @@
 ﻿namespace P03_SalesDatabase.Data.Models
-{    
+{
+    using P03_SalesDatabase.Common;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
@@ -12,16 +13,16 @@
 
         public int CustomerId { get; set; }
 
-        [Required, MaxLength(100)]
+        [Required, MaxLength(GlobalConstants.CustomerNameMaxLength)]
         public string Name { get; set; }
 
-        [Required, MaxLength(80)]
+        [Required, MaxLength(GlobalConstants.EmailMaxLength)]
         public string Email { get; set; }
 
-        [Required]
+        [Required, StringLength(GlobalConstants.CreditCardLength)]
         public string CreditCardNumber { get; set; }
 
         [Required]
-        public ICollection<Sale> Sales { get; set; }
+        public virtual ICollection<Sale> Sales { get; set; }
     }
 }
