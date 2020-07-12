@@ -18,5 +18,11 @@
 
         [Required]
         public Patient Patient { get; set; }
+
+        [Required]
+        public int DoctorId { get; set; }
+
+        [Required]
+        public Doctor Doctor { get; set; }
     }
 }

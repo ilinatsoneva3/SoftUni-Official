@@ -26,6 +26,8 @@
 
         public DbSet<Visitation> Visitations { get; set; }
 
+        public DbSet<Doctor> Doctors { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -51,6 +53,12 @@
                     .HasOne(v => v.Patient)
                     .WithMany(p => p.Visitations)
                     .HasForeignKey(v => v.PatientId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity
+                    .HasOne(v => v.Doctor)
+                    .WithMany(d => d.Visitations)
+                    .HasForeignKey(v => v.DoctorId)
                     .OnDelete(DeleteBehavior.Restrict);
             });
 
