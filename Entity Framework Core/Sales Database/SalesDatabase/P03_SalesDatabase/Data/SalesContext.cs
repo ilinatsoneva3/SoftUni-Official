@@ -65,6 +65,17 @@
                     .WithMany(p => p.Sales)
                     .HasForeignKey(s => s.ProductId)
                     .OnDelete(DeleteBehavior.Restrict);
+
+                entity
+                    .Property(s => s.Date)
+                    .HasDefaultValueSql("GETDATE()");
+            });
+
+            modelBuilder.Entity<Product>(entity =>
+            {
+                entity
+                    .Property(p => p.Description)
+                    .HasDefaultValue("No Description");
             });
         }
     }
