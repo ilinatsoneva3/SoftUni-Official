@@ -35,9 +35,9 @@ namespace ProductShop
         public static string GetUsersWithProducts(ProductShopContext context)
         {
             var users = context.Users
-                .Where(u => u.ProductsSold.Any(x => x.Buyer != null))
-                .ToList()
-                .OrderByDescending(u => u.ProductsSold.Count)
+                .AsEnumerable()
+                .Where(u => u.ProductsSold.Any(x => x.Buyer != null))                
+                .OrderByDescending(u => u.ProductsSold.Count(c=>c.Buyer!=null))
                 .Select(u => new
                 {
                     u.FirstName,
