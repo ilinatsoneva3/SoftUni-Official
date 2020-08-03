@@ -21,15 +21,15 @@ namespace CarDealer
             // context.Database.EnsureDeleted();
             // context.Database.EnsureCreated();
 
-            //var inputJson = File.ReadAllText("../../../Datasets/sales.json");
+            //var inputJson = File.ReadAllText("../../../Datasets/toyota-cars.json");
 
             if (!Directory.Exists(Path))
             {
                 Directory.CreateDirectory(Path);
             }
 
-            var result = GetSalesWithAppliedDiscount(context);
-            File.WriteAllText(Path + "/sales-discounts.json", result);
+            var result = GetCarsWithTheirListOfParts(context);
+            File.WriteAllText(Path + "/cars-and-parts.json", result);
         }
 
         public static string GetSalesWithAppliedDiscount(CarDealerContext context)
@@ -46,7 +46,7 @@ namespace CarDealer
                         s.Car.TravelledDistance
                     },
                     customerName = s.Customer.Name,
-                    s.Discount,
+                    Discount = s.Discount.ToString("F2"),
                     price = s.Car.PartCars.Sum(pc => pc.Part.Price).ToString("F2"),
                     priceWithDiscount = (s.Car.PartCars.Sum(pc => pc.Part.Price) * (1M - s.Discount / 100)).ToString("F2")
                 })
@@ -94,8 +94,8 @@ namespace CarDealer
                             .Select(cp => new
                             {
                                 cp.Part.Name,
-                                Part = cp.Part.Price.ToString("F2")
-                            })
+                                Price = cp.Part.Price.ToString("F2")
+                            }).ToList()
                 })
                 .ToList();
 
